@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                git 'https://github.com/TeamAaptatt/Aaptatt-hiring-assignment.git'
+                git 'https://github.com/harishsamala29/Aaptatt-hiring-assignment.git'
                 sh "mvn -Dmaven.test.failure.ignore=true clean package"
             }
         }
