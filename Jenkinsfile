@@ -12,15 +12,13 @@ pipeline {
                 sh "mvn -Dmaven.test.failure.ignore=true clean package"
             }
         }
-        
-        stage('Docker Image') {
+         stage('Docker Image') {
             steps {
-                sh "docker pull tomcat:9.0"
-                sh "docker tag tomcat:9.0 harish78/tomcat:A1"
+                sh "sudo docker pull tomcat:9.0"
+                sh "sudo docker tag tomcat:9.0 harish78/tomcat:A1"
                 sh "docker images"
             }
         }
-        
         stage('Docker Run') {
             steps {
                 sh "docker stop my_tomcat"
@@ -30,5 +28,13 @@ pipeline {
                 sh "docker ps"
             }
         }
+        stage('clous vm') {
+            steps {
+                sh "chmod +x docker.sh"
+                sh "./docker.sh"
+                sh "docker push harish78/tomcat:A1"
+               }
+        }
+        
     }
 }
