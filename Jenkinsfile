@@ -28,7 +28,7 @@ pipeline {
                 sh "docker ps"
             }
         }
-        stage('clous vm') {
+        stage('cloud vm') {
             steps {
                 sh "chmod +x docker.sh"
                 sh "./docker.sh"
